@@ -43,7 +43,7 @@ public class FragmentQuickAccess extends Fragment{
         Button[] quickAccessButtons = new Button[25];
         for(int i=0; i<quickAccessButtons.length; i++) {
             String buttonID = "button" + (i + 1);
-            int pageKeyNumer = (i + pageNumer * 100 );
+            int pageKeyNumer = (i + pageNumer * 100 ); //This 100 was added as a workaround to handle multiple Quick Access pages
             int resID = getResources().getIdentifier(buttonID, "id", context.getPackageName());
             quickAccessButtons[i] = ((Button) view.findViewById(resID));
             quickAccessButtons[i].setTag(R.string.KEY_NUMBER, pageKeyNumer);

@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setPages(int pagesCount){
+        //Quick Access Pages
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         for(int i=0;i<pagesCount;i++){
             viewPagerAdapter.addFragment(new FragmentQuickAccess(this, dataHelper, i));
