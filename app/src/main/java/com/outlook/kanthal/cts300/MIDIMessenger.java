@@ -75,7 +75,7 @@ public class MIDIMessenger {
         }
     }
 
-    public static boolean changePatch(int programChange, int bankSelect){
+    public static boolean selectPatch(int programChange, int bankSelect){
         if(MIDIMessenger.midiInputPort == null){
             return false;
         }

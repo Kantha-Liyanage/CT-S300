@@ -67,7 +67,7 @@ public class FragmentDialPad extends Fragment {
         if(number > 0 && number <= 400){
             Tone tone = dataHelper.getTone(Integer.parseInt(val));
             //Call patch
-            if(MIDIMessenger.changePatch(tone.programChange, tone.bankSelect)){
+            if(MIDIMessenger.selectPatch(tone.programChange, tone.bankSelect)){
                 MainActivity.setDisplayTone(tone.patchNumber,tone.patchName);
             }
         }
