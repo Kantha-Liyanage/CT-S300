@@ -99,6 +99,7 @@ public class FragmentQuickAccess extends Fragment{
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.context, android.R.layout.select_dialog_singlechoice);
         arrayAdapter.addAll(this.dataHelper.getTonesList());
 
+        //Cancel
         builderSingle.setNegativeButton(
                 "Cancel",
                 new DialogInterface.OnClickListener() {
@@ -109,7 +110,11 @@ public class FragmentQuickAccess extends Fragment{
                 }
         );
 
-        MyDialogInterfaceOnClickListener ear = new MyDialogInterfaceOnClickListener(view);
+        //Reset
+        builderSingle.setNeutralButton("Reset", new ToneResetDialogInterfaceOnClickListener(view));
+
+        //Change
+        ToneSelectDialogInterfaceOnClickListener ear = new ToneSelectDialogInterfaceOnClickListener(view);
         builderSingle.setAdapter(arrayAdapter, ear);
         builderSingle.show();
     }
@@ -131,12 +136,12 @@ public class FragmentQuickAccess extends Fragment{
         }
     }
 
-    class MyDialogInterfaceOnClickListener implements DialogInterface.OnClickListener{
+    class ToneSelectDialogInterfaceOnClickListener implements DialogInterface.OnClickListener{
 
         private View view;
         private Button selectedButton;
 
-        public MyDialogInterfaceOnClickListener(View view){
+        public ToneSelectDialogInterfaceOnClickListener(View view){
             this.view = view;
         }
 
@@ -191,7 +196,7 @@ public class FragmentQuickAccess extends Fragment{
                         @Override
                         public void onOk(AmbilWarnaDialog dialog, int color) {
                             //Set color and save
-                            Button button = MyDialogInterfaceOnClickListener.this.selectedButton;
+                            Button button = ToneSelectDialogInterfaceOnClickListener.this.selectedButton;
                             QuickAccessTone quickAccessTone = (QuickAccessTone)button.getTag(R.string.QUICK_ACCESS_TONE);
                             quickAccessTone.color = color + "";
                             if(dataHelper.saveQuickAccessTone(quickAccessTone)){
@@ -203,6 +208,27 @@ public class FragmentQuickAccess extends Fragment{
                             }
                         }
                     }).show();
+        }
+    }
+
+    class ToneResetDialogInterfaceOnClickListener implements DialogInterface.OnClickListener{
+        private View view;
+
+        public ToneResetDialogInterfaceOnClickListener(View view){
+            this.view = view;
+        }
+
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            Button button = (Button)view;
+            QuickAccessTone quickAccessToneOld = (QuickAccessTone)button.getTag(R.string.QUICK_ACCESS_TONE);
+            if(quickAccessToneOld != null){
+                if(dataHelper.deleteQuickAccessTone(quickAccessToneOld.keyNumber)){
+                    button.setTag(R.string.QUICK_ACCESS_TONE, null);
+                    button.setText("");
+                    button.setBackgroundResource(R.drawable.button);
+                }
+            }
         }
     }
 }

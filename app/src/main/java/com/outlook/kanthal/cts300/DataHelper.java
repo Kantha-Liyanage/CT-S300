@@ -79,6 +79,11 @@ public class DataHelper extends SQLiteOpenHelper {
         return value;
     }
 
+    public boolean deleteQuickAccessTone(int keyNumber){
+        long rowId = this.getWritableDatabase().delete("QuickAccessTones", "KeyNumber = ?", new String[]{keyNumber+""});
+        return (rowId>-1);
+    }
+
     public boolean saveQuickAccessTone(QuickAccessTone quickAccessTone){
         this.getWritableDatabase().delete("QuickAccessTones", "KeyNumber = ?", new String[]{quickAccessTone.keyNumber+""});
 
