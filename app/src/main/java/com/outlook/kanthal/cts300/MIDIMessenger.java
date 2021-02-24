@@ -71,7 +71,7 @@ public class MIDIMessenger {
     public class MIDIThrough extends MidiReceiver{
         @Override
         public void onSend(byte[] bytes, int offset, int count, long time) throws IOException {
-            MIDIMessenger.midiInputPort.send(bytes, offset, count);
+            MIDIMessenger.midiInputPort.send(bytes, offset, count, time);
         }
     }
 
