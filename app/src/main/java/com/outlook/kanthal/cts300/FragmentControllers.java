@@ -25,12 +25,16 @@ public class FragmentControllers extends Fragment implements SeekBar.OnSeekBarCh
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.controllers, container, false);
 
+        SeekBar seekBarMasterVolume = view.findViewById(R.id.seekBarMasterVolume);
+        seekBarMasterVolume.setOnSeekBarChangeListener(this);
         SeekBar seekBarReverb = view.findViewById(R.id.seekBarReverb);
         seekBarReverb.setOnSeekBarChangeListener(this);
         SeekBar seekBarModulation = view.findViewById(R.id.seekBarModulation);
         seekBarModulation.setOnSeekBarChangeListener(this);
         SeekBar seekBarBrightness = view.findViewById(R.id.seekBarBrightness);
         seekBarBrightness.setOnSeekBarChangeListener(this);
+        SeekBar seekBarResonance = view.findViewById(R.id.seekBarResonance);
+        seekBarResonance.setOnSeekBarChangeListener(this);
 
         return view;
     }
@@ -42,7 +46,10 @@ public class FragmentControllers extends Fragment implements SeekBar.OnSeekBarCh
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int value, boolean b) {
-        if(seekBar.getId() == R.id.seekBarReverb) {
+        if(seekBar.getId() == R.id.seekBarMasterVolume) {
+            MIDIMessenger.changeMasterValume(value);
+        }
+        else if(seekBar.getId() == R.id.seekBarReverb) {
            MIDIMessenger.changeReverb(value);
         }
         else if(seekBar.getId() == R.id.seekBarModulation) {
@@ -50,6 +57,9 @@ public class FragmentControllers extends Fragment implements SeekBar.OnSeekBarCh
         }
         else if(seekBar.getId() == R.id.seekBarBrightness) {
             MIDIMessenger.changeBrightness(value);
+        }
+        else if(seekBar.getId() == R.id.seekBarResonance) {
+            MIDIMessenger.changeResonance(value);
         }
     }
 

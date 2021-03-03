@@ -170,4 +170,42 @@ public class MIDIMessenger {
         }
     }
 
+    public static boolean changeResonance(int value){
+        if(MIDIMessenger.midiInputPort == null){
+            return false;
+        }
+
+        byte[] buffer = new byte[3];
+
+        buffer[0] = (byte)(0xB0 + 0);
+        buffer[1] = (byte)71;
+        buffer[2] = (byte)value;
+        try{
+            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            return  true;
+        }
+        catch (Exception er){
+            return false;
+        }
+    }
+
+    public static boolean changeMasterValume(int value){
+        if(MIDIMessenger.midiInputPort == null){
+            return false;
+        }
+
+        byte[] buffer = new byte[3];
+
+        buffer[0] = (byte)(0xB0 + 0);
+        buffer[1] = (byte)7;
+        buffer[2] = (byte)value;
+        try{
+            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            return  true;
+        }
+        catch (Exception er){
+            return false;
+        }
+    }
+
 }
