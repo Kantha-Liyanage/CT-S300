@@ -65,11 +65,11 @@ public class FragmentControllers extends Fragment implements SeekBar.OnSeekBarCh
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+        //Do nothing
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
+        //Do nothing
     }
 }
