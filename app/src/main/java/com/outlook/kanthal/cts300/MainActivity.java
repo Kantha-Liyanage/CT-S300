@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<pagesCount;i++){
             viewPagerAdapter.addFragment(new FragmentQuickAccess(this, dataHelper, i));
         }
-        //Fixed Page
+        //Fixed Pages
+        viewPagerAdapter.addFragment(new FragmentControllers(this));
         viewPagerAdapter.addFragment(new FragmentDialPad(this, dataHelper));
+
         viewPager.setAdapter(viewPagerAdapter);
     }
 

@@ -75,7 +75,7 @@ public class MIDIMessenger {
         }
     }
 
-    public static boolean selectPatch(int programChange, int bankSelect){
+    public static boolean changePatch(int programChange, int bankSelect){
         if(MIDIMessenger.midiInputPort == null){
             return false;
         }
@@ -112,4 +112,62 @@ public class MIDIMessenger {
             return false;
         }
     }
+
+    public static boolean changeReverb(int value){
+        if(MIDIMessenger.midiInputPort == null){
+            return false;
+        }
+
+        byte[] buffer = new byte[3];
+
+        buffer[0] = (byte)(0xB0 + 0);
+        buffer[1] = (byte)91;
+        buffer[2] = (byte)value;
+        try{
+            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            return  true;
+        }
+        catch (Exception er){
+            return false;
+        }
+    }
+
+    public static boolean changeBrightness(int value){
+        if(MIDIMessenger.midiInputPort == null){
+            return false;
+        }
+
+        byte[] buffer = new byte[3];
+
+        buffer[0] = (byte)(0xB0 + 0);
+        buffer[1] = (byte)74;
+        buffer[2] = (byte)value;
+        try{
+            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            return  true;
+        }
+        catch (Exception er){
+            return false;
+        }
+    }
+
+    public static boolean changeModulation(int value){
+        if(MIDIMessenger.midiInputPort == null){
+            return false;
+        }
+
+        byte[] buffer = new byte[3];
+
+        buffer[0] = (byte)(0xB0 + 0);
+        buffer[1] = (byte)1;
+        buffer[2] = (byte)value;
+        try{
+            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            return  true;
+        }
+        catch (Exception er){
+            return false;
+        }
+    }
+
 }

@@ -86,7 +86,7 @@ public class FragmentQuickAccess extends Fragment{
         Button button = (Button)view;
         QuickAccessTone tone = (QuickAccessTone)button.getTag(R.string.QUICK_ACCESS_TONE);
         if(tone != null){
-            if(MIDIMessenger.selectPatch(tone.programChange, tone.bankSelect)){
+            if(MIDIMessenger.changePatch(tone.programChange, tone.bankSelect)){
                 MainActivity.setDisplayTone(tone.patchNumber, tone.patchName);
             }
         }
