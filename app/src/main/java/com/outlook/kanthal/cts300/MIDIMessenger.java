@@ -22,6 +22,18 @@ public class MIDIMessenger {
     private static MidiInputPort midiInputPort;
     private static MidiOutputPort midiOutputPort;
 
+    private static int reverb;
+    private static boolean reverbSet;
+
+    private static int brightness;
+    private static boolean brightnessSet;
+
+    private static int modulation;
+    private static boolean modulationSet;
+
+    private static int resonance;
+    private static boolean resonanceSet;
+
     public MIDIMessenger(Activity context){
         this.midiManager = (MidiManager)context.getSystemService(Context.MIDI_SERVICE);
 
@@ -106,6 +118,23 @@ public class MIDIMessenger {
         buffer[1] = (byte)programChange;
         try{
             MIDIMessenger.midiInputPort.send(buffer, 0, 2);
+
+            if(MIDIMessenger.reverbSet){
+                MIDIMessenger.changeReverb(MIDIMessenger.reverb);
+            }
+
+            if(MIDIMessenger.brightnessSet){
+                MIDIMessenger.changeBrightness(MIDIMessenger.brightness);
+            }
+
+            if(MIDIMessenger.modulationSet){
+                MIDIMessenger.changeModulation(MIDIMessenger.modulation);
+            }
+
+            if(MIDIMessenger.resonanceSet){
+                MIDIMessenger.changeResonance(MIDIMessenger.resonance);
+            }
+
             return true;
         }
         catch (Exception er){
@@ -125,6 +154,8 @@ public class MIDIMessenger {
         buffer[2] = (byte)value;
         try{
             MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            MIDIMessenger.reverbSet = true;
+            MIDIMessenger.reverb = value;
             return  true;
         }
         catch (Exception er){
@@ -144,6 +175,8 @@ public class MIDIMessenger {
         buffer[2] = (byte)value;
         try{
             MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            MIDIMessenger.brightness = value;
+            MIDIMessenger.brightnessSet = true;
             return  true;
         }
         catch (Exception er){
@@ -163,6 +196,8 @@ public class MIDIMessenger {
         buffer[2] = (byte)value;
         try{
             MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            MIDIMessenger.modulation = value;
+            MIDIMessenger.modulationSet = true;
             return  true;
         }
         catch (Exception er){
@@ -182,6 +217,8 @@ public class MIDIMessenger {
         buffer[2] = (byte)value;
         try{
             MIDIMessenger.midiInputPort.send(buffer, 0, 3);
+            MIDIMessenger.resonance = value;
+            MIDIMessenger.resonanceSet = true;
             return  true;
         }
         catch (Exception er){
