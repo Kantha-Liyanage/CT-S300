@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -45,10 +47,29 @@ public class FragmentDialPad extends Fragment {
             });
         }
 
+        ImageButton buttonUp = (ImageButton) view.findViewById(R.id.buttonUp);
+        buttonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigate(1);
+            }
+        });
+        ImageButton buttonDown = (ImageButton) view.findViewById(R.id.buttonDown);
+        buttonDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigate(-1);
+            }
+        });
+
         return view;
     }
 
-    public void dialPadButtonClicked(View view) {
+    private void navigate(int direction){
+        setPatch(direction);
+    }
+
+    private void dialPadButtonClicked(View view) {
         Button button = (Button)view;
         char key = button.getText().toString().toCharArray()[0];
         patchNumber[0] = patchNumber[1];
@@ -60,12 +81,31 @@ public class FragmentDialPad extends Fragment {
             position = 2;
         }
 
+        //Set patch
+        setPatch(0);
+    }
+
+    private void setPatch(int navigate){
         //Get patch
         String val = new String(patchNumber);
         val = val.replaceFirst("^0+(?!$)", "");
         int number = Integer.parseInt(val);
+
+        if (navigate !=0){
+            number += navigate;
+
+            if(number == 0){
+                patchNumber = new char[]{'0','0','1'};
+                return;
+            }
+            else if(number>400){
+                patchNumber = new char[]{'4','0','1'};
+                return;
+            }
+        }
+
         if(number > 0 && number <= 400){
-            Tone tone = dataHelper.getTone(Integer.parseInt(val));
+            Tone tone = dataHelper.getTone(number);
             //Call patch
             if(MIDIMessenger.changePatch(tone.programChange, tone.bankSelect)){
                 MainActivity.setDisplayTone(tone.patchNumber,tone.patchName);
