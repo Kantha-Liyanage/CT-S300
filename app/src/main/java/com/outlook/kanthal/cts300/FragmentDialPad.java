@@ -93,23 +93,21 @@ public class FragmentDialPad extends Fragment {
 
         if (navigate !=0){
             number += navigate;
-
-            if(number == 0){
-                patchNumber = new char[]{'0','0','1'};
-                return;
-            }
-            else if(number>400){
-                patchNumber = new char[]{'4','0','1'};
-                return;
-            }
         }
 
-        if(number > 0 && number <= 400){
-            Tone tone = dataHelper.getTone(number);
-            //Call patch
-            if(MIDIMessenger.changePatch(tone.programChange, tone.bankSelect)){
-                MainActivity.setDisplayTone(tone.patchNumber,tone.patchName);
-            }
+        if(number == 0){
+            patchNumber = new char[]{'0','0','1'};
+            number = 1;
+        }
+        else if(number>400){
+            patchNumber = new char[]{'4','0','0'};
+            number = 400;
+        }
+
+        Tone tone = dataHelper.getTone(number);
+        //Call patch
+        if(MIDIMessenger.changePatch(tone.programChange, tone.bankSelect)){
+            MainActivity.setDisplayTone(tone.patchNumber,tone.patchName);
         }
     }
 
