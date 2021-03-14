@@ -88,16 +88,13 @@ public class FragmentDialPad extends Fragment {
         //Convert patch number
         String val = new String(patchNumber);
         val = val.replaceFirst("^0+(?!$)", "");
-        if(val.isEmpty()){
-            val = "0";
-        }
         int number = Integer.parseInt(val);
 
         if (navigate !=0){
             number += navigate;
         }
 
-        if(number == 0){
+        if(number <= 0){
             patchNumber = new char[]{'0','0','1'};
             number = 1;
         }

@@ -4,9 +4,9 @@
 
     <!-- View background color
     <solid
-        android:color="@color/background_color" >
+        android:color="#FCECEFEB" >
     </solid>
-     -->
+    -->
 
     <!-- View border color and width -->
     <stroke

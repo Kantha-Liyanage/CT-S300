@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:text="Master Volume" />
 
             <it.beppi.knoblibrary.Knob
@@ -36,7 +37,8 @@
                 app:kKnobColor="#4E4D4D"
                 app:kSelectedStateMarkerContinuous="true"
                 app:kSelectedStateMarkerColor="#F63D02"
-                app:kStateMarkersWidth="4dp"
+                app:kStateMarkersAccentWidth="4dp"
+                app:kStateMarkersWidth="2dp"
                 app:kFreeRotation="false"
                 app:kMinAngle="-140"
                 app:kMaxAngle="140"
@@ -48,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:text="Reverb" />
 
             <it.beppi.knoblibrary.Knob
@@ -61,7 +64,8 @@
                 app:kKnobColor="#4E4D4D"
                 app:kSelectedStateMarkerContinuous="true"
                 app:kSelectedStateMarkerColor="#F63D02"
-                app:kStateMarkersWidth="4dp"
+                app:kStateMarkersAccentWidth="4dp"
+                app:kStateMarkersWidth="2dp"
                 app:kFreeRotation="false"
                 app:kMinAngle="-140"
                 app:kMaxAngle="140"
@@ -80,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:text="Modulation" />
 
             <it.beppi.knoblibrary.Knob
@@ -93,7 +98,8 @@
                 app:kKnobColor="#4E4D4D"
                 app:kSelectedStateMarkerContinuous="true"
                 app:kSelectedStateMarkerColor="#F63D02"
-                app:kStateMarkersWidth="4dp"
+                app:kStateMarkersAccentWidth="4dp"
+                app:kStateMarkersWidth="2dp"
                 app:kFreeRotation="false"
                 app:kMinAngle="-140"
                 app:kMaxAngle="140"
@@ -105,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:textStyle="bold"
                 android:text="Brightness" />
 
             <it.beppi.knoblibrary.Knob
@@ -118,7 +125,8 @@
                 app:kKnobColor="#4E4D4D"
                 app:kSelectedStateMarkerContinuous="true"
                 app:kSelectedStateMarkerColor="#F63D02"
-                app:kStateMarkersWidth="4dp"
+                app:kStateMarkersAccentWidth="4dp"
+                app:kStateMarkersWidth="2dp"
                 app:kFreeRotation="false"
                 app:kMinAngle="-140"
                 app:kMaxAngle="140"

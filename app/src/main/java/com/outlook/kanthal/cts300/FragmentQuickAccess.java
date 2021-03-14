@@ -53,7 +53,8 @@ public class FragmentQuickAccess extends Fragment{
                 for (QuickAccessTone quickAccessTone: quickAccessTones) {
                     if(quickAccessTone.keyNumber == pageKeyNumer){
                         quickAccessButtons[i].setTag(R.string.QUICK_ACCESS_TONE, quickAccessTone);
-                        quickAccessButtons[i].setText(quickAccessTone.patchName);
+                        quickAccessButtons[i].setText(quickAccessTone.patchName + "\n" +  quickAccessTone.patchNumber);
+
                         if(!quickAccessTone.color.equals("")) {
                             int color = Integer.parseInt(quickAccessTone.color);
                             quickAccessButtons[i].getBackground().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
@@ -174,7 +175,7 @@ public class FragmentQuickAccess extends Fragment{
             quickAccessTone.programChange = tone.programChange;
             quickAccessTone.bankSelect = tone.bankSelect;
             if(dataHelper.saveQuickAccessTone(quickAccessTone)){
-                button.setText(tone.patchName);
+                button.setText(tone.patchName + "\n" +  tone.patchNumber);
                 button.setTag(R.string.QUICK_ACCESS_TONE, quickAccessTone);
             }
             else{
