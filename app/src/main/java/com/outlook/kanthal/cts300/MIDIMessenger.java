@@ -31,9 +31,6 @@ public class MIDIMessenger {
     private static int modulation;
     private static boolean modulationSet;
 
-    private static int resonance;
-    private static boolean resonanceSet;
-
     public MIDIMessenger(Activity context){
         this.midiManager = (MidiManager)context.getSystemService(Context.MIDI_SERVICE);
 
@@ -131,10 +128,6 @@ public class MIDIMessenger {
                 MIDIMessenger.changeModulation(MIDIMessenger.modulation);
             }
 
-            if(MIDIMessenger.resonanceSet){
-                MIDIMessenger.changeResonance(MIDIMessenger.resonance);
-            }
-
             return true;
         }
         catch (Exception er){
@@ -198,27 +191,6 @@ public class MIDIMessenger {
             MIDIMessenger.midiInputPort.send(buffer, 0, 3);
             MIDIMessenger.modulation = value;
             MIDIMessenger.modulationSet = true;
-            return  true;
-        }
-        catch (Exception er){
-            return false;
-        }
-    }
-
-    public static boolean changeResonance(int value){
-        if(MIDIMessenger.midiInputPort == null){
-            return false;
-        }
-
-        byte[] buffer = new byte[3];
-
-        buffer[0] = (byte)(0xB0 + 0);
-        buffer[1] = (byte)71;
-        buffer[2] = (byte)value;
-        try{
-            MIDIMessenger.midiInputPort.send(buffer, 0, 3);
-            MIDIMessenger.resonance = value;
-            MIDIMessenger.resonanceSet = true;
             return  true;
         }
         catch (Exception er){

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:stretchColumns="*"
         android:background="@drawable/rounded_border"
         android:layout_marginRight="10dp">
 
@@ -17,140 +18,55 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/textView0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:text="Master Volume" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <SeekBar
-                android:id="@+id/seekBarMasterVolume"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:thumb="@drawable/thumb"
-                android:progressDrawable="@drawable/progress_seekbar"
-                android:max="127"
-                android:min="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:text="Reverb" />
-        </TableRow>
+                android:layout_marginTop="5dp"
+                android:text="Master Volume" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <SeekBar
-                android:id="@+id/seekBarReverb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:thumb="@drawable/thumb"
-                android:progressDrawable="@drawable/progress_seekbar"
-                android:max="127"
-                android:min="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:text="Modulation" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <SeekBar
-                android:id="@+id/seekBarModulation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:thumb="@drawable/thumb"
-                android:progressDrawable="@drawable/progress_seekbar"
-                android:max="127"
-                android:min="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:text="Resonance" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <SeekBar
-                android:id="@+id/seekBarResonance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:thumb="@drawable/thumb"
-                android:progressDrawable="@drawable/progress_seekbar"
-                android:max="127"
-                android:min="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            <it.beppi.knoblibrary.Knob
+                android:id="@+id/knobMasterVolume"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:kShowBalloonValues="true"
+                app:kIndicatorColor="#F44336"
+                app:kIndicatorWidth="4dp"
+                app:kKnobColor="#4E4D4D"
+                app:kSelectedStateMarkerContinuous="true"
+                app:kSelectedStateMarkerColor="#F63D02"
+                app:kStateMarkersWidth="4dp"
+                app:kFreeRotation="false"
+                app:kMinAngle="-140"
+                app:kMaxAngle="140"
+                app:kNumberOfStates="20"/>
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:text="Brightness" />
+                android:layout_marginTop="5dp"
+                android:text="Reverb" />
+
+            <it.beppi.knoblibrary.Knob
+                android:id="@+id/knobReverb"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:kShowBalloonValues="true"
+                app:kIndicatorColor="#F44336"
+                app:kIndicatorWidth="4dp"
+                app:kKnobColor="#4E4D4D"
+                app:kSelectedStateMarkerContinuous="true"
+                app:kSelectedStateMarkerColor="#F63D02"
+                app:kStateMarkersWidth="4dp"
+                app:kFreeRotation="false"
+                app:kMinAngle="-140"
+                app:kMaxAngle="140"
+                app:kNumberOfStates="20"/>
+
         </TableRow>
 
         <TableRow
@@ -158,17 +74,69 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <SeekBar
-                android:id="@+id/seekBarBrightness"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:thumb="@drawable/thumb"
-                android:progressDrawable="@drawable/progress_seekbar"
-                android:max="127"
-                android:min="0" />
+                android:layout_marginTop="5dp"
+                android:text="Modulation" />
+
+            <it.beppi.knoblibrary.Knob
+                android:id="@+id/knobModulation"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:kShowBalloonValues="true"
+                app:kIndicatorColor="#F44336"
+                app:kIndicatorWidth="4dp"
+                app:kKnobColor="#4E4D4D"
+                app:kSelectedStateMarkerContinuous="true"
+                app:kSelectedStateMarkerColor="#F63D02"
+                app:kStateMarkersWidth="4dp"
+                app:kFreeRotation="false"
+                app:kMinAngle="-140"
+                app:kMaxAngle="140"
+                app:kNumberOfStates="20"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="Brightness" />
+
+            <it.beppi.knoblibrary.Knob
+                android:id="@+id/knobBrightness"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:kShowBalloonValues="true"
+                app:kIndicatorColor="#F44336"
+                app:kIndicatorWidth="4dp"
+                app:kKnobColor="#4E4D4D"
+                app:kSelectedStateMarkerContinuous="true"
+                app:kSelectedStateMarkerColor="#F63D02"
+                app:kStateMarkersWidth="4dp"
+                app:kFreeRotation="false"
+                app:kMinAngle="-140"
+                app:kMaxAngle="140"
+                app:kNumberOfStates="20"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Switch
+                android:id="@+id/switchLock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Lock" />
         </TableRow>
 
     </TableLayout>

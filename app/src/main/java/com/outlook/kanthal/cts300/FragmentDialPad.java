@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -86,9 +85,12 @@ public class FragmentDialPad extends Fragment {
     }
 
     private void setPatch(int navigate){
-        //Get patch
+        //Convert patch number
         String val = new String(patchNumber);
         val = val.replaceFirst("^0+(?!$)", "");
+        if(val.isEmpty()){
+            val = "0";
+        }
         int number = Integer.parseInt(val);
 
         if (navigate !=0){
