@@ -16,7 +16,7 @@ public class FragmentDialPad extends Fragment {
     Context context;
     DataHelper dataHelper;
 
-    char[] patchNumber = {'0','0','0'};
+    char[] patchNumber = {'0','0','1'};
     int position = 2;
 
     public FragmentDialPad(Context context, DataHelper dataHelper){
@@ -94,13 +94,34 @@ public class FragmentDialPad extends Fragment {
             number += navigate;
         }
 
-        if(number <= 0){
+        if(number == 0){
+            patchNumber = new char[]{'4','0','0'};
+            number = 400;
+        }
+        else if(number==401){
             patchNumber = new char[]{'0','0','1'};
             number = 1;
         }
-        else if(number>400){
-            patchNumber = new char[]{'4','0','0'};
-            number = 400;
+        else{
+            String noStr = number + "";
+            switch (noStr.length()){
+                case 1:
+                    patchNumber[0] = '0';
+                    patchNumber[1] = '0';
+                    patchNumber[2] = noStr.charAt(0);
+                    break;
+                case 2:
+                    patchNumber[0] = '0';
+                    patchNumber[1] = noStr.charAt(0);
+                    patchNumber[2] = noStr.charAt(1);
+                    break;
+                case 3:
+                    patchNumber[0] = noStr.charAt(0);
+                    patchNumber[1] = noStr.charAt(1);
+                    patchNumber[2] = noStr.charAt(2);
+                    break;
+            }
+
         }
 
         Tone tone = dataHelper.getTone(number);

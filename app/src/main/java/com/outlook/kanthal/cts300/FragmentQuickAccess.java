@@ -129,7 +129,7 @@ public class FragmentQuickAccess extends Fragment{
         int red = Color.red(color);
         int green = Color.green(color);
         int blue = Color.blue(color);
-        if ( (red*0.299) + (green*0.587) + (blue*0.114) > 186){
+        if ( (red*0.299) + (green*0.587) + (blue*0.114) > 160){
             return Color.BLACK;
         }
         else{
