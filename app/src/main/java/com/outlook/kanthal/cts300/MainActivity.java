@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         textViewPatch = findViewById(R.id.textViewPatch);
         viewPager = findViewById(R.id.viewPager);
 
-        //Get Page Count
+        //Get Quick Access Page Count
         int pages = Integer.parseInt(dataHelper.getSetting("QUICK_ACCESS_PAGES"));
         setPages(pages);
 

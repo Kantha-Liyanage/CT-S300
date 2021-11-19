@@ -103,6 +103,10 @@ public class FragmentDialPad extends Fragment {
             number = 1;
         }
         else{
+            if(number > 400){
+                number = 400;
+            }
+
             String noStr = number + "";
             switch (noStr.length()){
                 case 1:
